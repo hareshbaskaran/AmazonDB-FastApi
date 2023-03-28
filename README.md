@@ -19,6 +19,11 @@ This is an e-commerce platform backend built with FastAPI and integrated with Am
 - Graphical representation of courier service providers with Neo4j
 - Pre-trained model for image to product search with Codelabs
 
+## Database Design 
+- ER diagram : 
+- Normalised Relational Schema :
+- Database and Project Analysis: https://docs.google.com/document/d/e/2PACX-1vQBefVC2wWksEsZvqFS04Hw_9kSxNgplvfubVVVJIQeXNR8-GkAYevTKQvJ67rd47ZrFCxpqrH-O3MJ/pub
+
 ## Installation
 
 1. Clone the repository.
