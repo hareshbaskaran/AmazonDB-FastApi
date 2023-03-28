@@ -20,8 +20,8 @@ This is an e-commerce platform backend built with FastAPI and integrated with Am
 - Pre-trained model for image to product search with Codelabs
 
 ## Database Design 
-- ER diagram : 
-- Normalised Relational Schema :
+- ER diagram : https://drive.google.com/file/d/1EvoE_guu-XTMZnmS11w6OcpLkKyLbA5P/view?usp=drivesdk
+- Normalised Relational Schema : https://dbdiagram.io/d/642338775758ac5f1724e100
 - Database and Project Analysis: https://docs.google.com/document/d/e/2PACX-1vQBefVC2wWksEsZvqFS04Hw_9kSxNgplvfubVVVJIQeXNR8-GkAYevTKQvJ67rd47ZrFCxpqrH-O3MJ/pub
 
 ## Installation
