@@ -1,7 +1,15 @@
 from typing import Annotated
+from requests import Session
 from schema import User,UserInDB,fake_hash_password,fake_users_db,get_current_active_user
 from fastapi import Depends, FastAPI,HTTPException
 from fastapi.security import OAuth2PasswordBearer,OAuth2PasswordRequestForm
+from fastapi import FastAPI
+from pydantic import BaseModel
+from Models import UserBase
+from typing import List
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 app = FastAPI()
 
@@ -31,3 +39,17 @@ async def read_users_me(
     current_user: Annotated[User, Depends(get_current_active_user)]
 ):
     return current_user
+
+@app.post("/register_user/", response_model=UserInDB)
+def register_user(user: UserBase, db: Session = Depends(read_users_me)):
+    # Check if the user already exists
+    db_user = db.query(User).filter_by(email=user.email).first()
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    
+    # Create a new user
+    db_user = User(username=user.username, email=user.email, password=user.password)
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
