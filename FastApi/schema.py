@@ -4,19 +4,12 @@ from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from pydantic import BaseModel
 fake_users_db = {
-    "johndoe": {
-        "username": "johndoe",
-        "full_name": "John Doe",
-        "email": "johndoe@example.com",
+    "admin": {
+        "username": "admin101",
+        "full_name": "admin101",
+        "email": "baskaranharesh@gmail.com",
         "hashed_password": "fakehashedsecret",
         "disabled": False,
-    },
-    "alice": {
-        "username": "alice",
-        "full_name": "Alice Wonderson",
-        "email": "alice@example.com",
-        "hashed_password": "fakehashedsecret2",
-        "disabled": True,
     },
 }
 def fake_hash_password(password: str):
