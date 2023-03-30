@@ -13,14 +13,13 @@ This is an e-commerce platform backend built with FastAPI and integrated with Am
 - Caching of shopping cart with Redis
 - OAuth2 authentication
 - Email systems with Mailgun
-- OTP verification with Firebase
-- Image cloud storage and messaging systems
+- Image cloud storage and messaging systems with Firebase 
 - Encryption with Bcrypt
 - Graphical representation of courier service providers with Neo4j
 - Pre-trained model for image to product search with Codelabs
 
 ## Database Design 
-- ER diagram : https://drive.google.com/file/d/1EvoE_guu-XTMZnmS11w6OcpLkKyLbA5P/view?usp=drivesdk
+- ER diagram : 
 - Normalised Relational Schema : https://dbdiagram.io/d/642338775758ac5f1724e100
 - Database and Project Analysis: https://docs.google.com/document/d/e/2PACX-1vQBefVC2wWksEsZvqFS04Hw_9kSxNgplvfubVVVJIQeXNR8-GkAYevTKQvJ67rd47ZrFCxpqrH-O3MJ/pub
 
@@ -51,10 +50,10 @@ After installation, the following endpoints will be available:
 The following integrations are used in the project:
 
 - Stripe API for online payments
-- Redis for caching shopping cart
+- Redis for caching shopping cart and session storage
 - OAuth2 for portal-defined authentication
 - Mailgun for email notification
-- Firebase for OTP verification
+- Firebase for Image Cloud Storage
 - Neo4j for graphical representation of courier service providers 
 
 ## Environment Variables
