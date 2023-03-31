@@ -1,5 +1,6 @@
 from typing import Annotated
 from requests import Session
+from db import SessionLocal
 from schema import User,UserInDB,fake_hash_password,fake_users_db,get_current_active_user
 from fastapi import Depends, FastAPI,HTTPException
 from fastapi.security import OAuth2PasswordBearer,OAuth2PasswordRequestForm
@@ -16,7 +17,13 @@ app = FastAPI()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+        
 @app.get("/items/")
 async def read_items(token: Annotated[str, Depends(oauth2_scheme)]):
     return {"token": token}
@@ -42,9 +49,9 @@ async def read_users_me(
     return current_user
 
 @app.post("/register_user/", response_model=UserInDB)
-def register_user(user: UserBase, db: Session = Depends(read_users_me)):
+def register_user(user: UserBase, db: Session = Depends(get_db)):
     # Check if the user already exists
-    db_user = db.query(User).filter_by(email=user.email).first()
+    db_user = db.query(User).filter_by(email=User.email).first()
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
     
